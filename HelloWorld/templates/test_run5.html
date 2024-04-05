@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>菜鸟教程</title>
+</head>
+<body>
+{% load my_tags %}
+{% load static %}
+
+    <p>{{name|length}}</p>
+    <p>{{name|truncatechars:4}}</p>
+    <p>{{time|date:"Y-m-d"}}</p>  {# 相当于 参数名|函数:函数形参 #}
+    <p>{{num|filesizeformat}}</p>
+    <p>{{default_value|default:'how dare you '}}</p>
+    <p>{{str2|safe}}</p>
+    <p>
+        {%if num2 > 90 and num2 <= 100%}
+            优秀
+        {%elif num2 > 60 and num2 <= 90%}
+            合格
+        {%else%}
+            一边玩去
+        {%endif%}
+
+    </p>
+
+    <p>
+        <ul>
+        {% for athlete in athlete_ls %}
+            <li>{{ athlete }}</li>
+        {% endfor %}
+    </ul>
+
+
+    </p>
+
+
+    <p>
+        <ul>
+        {% for athlete in athlete_ls reversed%}
+            <li>{{ athlete }}</li>
+        {% endfor %}
+    </ul>
+
+
+    </p>
+
+    <p>{{ 11|my_filter:22 }}</p>
+    <p>{% my_tag1 11 22 33 %}</p>
+
+    <p>{% my_html 'zzz' 'xxx' %}</p>
+
+    <p>{{name}}<img src="{% static 'images/runoob-logo.png' %}" alt="runoob-logo"></p>
+    
+
+</body>
+</html>
